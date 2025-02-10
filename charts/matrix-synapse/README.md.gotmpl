@@ -1,0 +1,33 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.homepageLine" . }}
+
+
+This chart is a fork of  [codeberg.org/wrenix/helm-charts/src/branch/main/matrix-synapse](https://codeberg.org/wrenix/helm-charts/src/branch/main/matrix-synapse)
+
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| ebadfd |  | <https://ebadfd.tech> |
+
+## Installation
+
+### Add Helm repository
+
+```shell
+helm repo add renovate https://github.com/ebadfd/helm-charts/matrix-synapse
+helm repo update
+```
+
+## Configuration
+
+The following table lists the configurable parameters of the chart and the default values.
+
+{{ template "chart.valuesSection" . }}

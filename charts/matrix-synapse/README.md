@@ -17,7 +17,7 @@ This chart is a fork of  [codeberg.org/wrenix/helm-charts/src/branch/main/matrix
 ### Add Helm repository
 
 ```shell
-helm repo add renovate https://github.com/ebadfd/helm-charts/matrix-synapse
+helm repo add matrix-synapse https://helm.ebadfd.tech
 helm repo update
 ```
 

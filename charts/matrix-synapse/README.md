@@ -99,7 +99,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.master.persistence.enabled | bool | `true` |  |
 | redis.master.service.port | int | `6379` |  |
 | redis.replica.persistence.enabled | bool | `true` |  |
-| serverName | string | `nil` | The Matrix domain name, this is what will be used for the domain part in your MXIDs. |
+| serverName | string | `"matrix.example.com"` | The Matrix domain name, this is what will be used for the domain part in your MXIDs. |
 | service.port | int | `8008` |  |
 | service.targetPort | string | `"http"` |  |
 | service.type | string | `"ClusterIP"` |  |

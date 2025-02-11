@@ -1,0 +1,33 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.homepageLine" . }}
+
+
+This chart is a fork of  [https://github.com/small-hack/matrix-chart](https://github.com/small-hack/matrix-chart/tree/main), mostly with additional bridges for google-chat for my usecases
+
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| ebadfd |  | <https://ebadfd.tech> |
+
+## Installation
+
+### Add Helm repository
+
+```shell
+helm repo add matrix https://helm.ebadfd.tech
+helm repo update
+```
+
+## Configuration
+
+The following table lists the configurable parameters of the chart and the default values.
+
+{{ template "chart.valuesSection" . }}

@@ -44,6 +44,4 @@ jobs:
           CR_SKIP_EXISTING: true
 
       - name: Run helm chart builder
-        ebadfd/helm-repo-html@v0.0.1-beta
-        env:
-          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        uses: ebadfd/helm-repo-html@v0.0.1-beta

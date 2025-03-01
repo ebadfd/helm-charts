@@ -5,6 +5,9 @@ icon: https://avatars.githubusercontent.com/u/159397742?s=200&v=4
 name: glance
 version: 0.1.0
 appVersion: v0.7.3
+keywords:
+  - glance
+  - Homepage
 sources:
   - https://github.com/ebadfd/helm-charts/charts/glance
   - https://github.com/glanceapp/glance

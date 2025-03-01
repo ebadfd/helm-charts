@@ -44,4 +44,4 @@ jobs:
           CR_SKIP_EXISTING: true
 
       - name: Run helm chart builder
-        uses: ebadfd/helm-repo-html@e4e425d9b5ec178547d2be75cd10c2b5a88a815d
+        uses: ebadfd/helm-repo-html@bfbbaff12784db02a6514e57fbdf4c6b7aa27f3e

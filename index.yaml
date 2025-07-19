@@ -43,4 +43,24 @@ entries:
     urls:
     - https://github.com/ebadfd/helm-charts/releases/download/matrix-synapse-1.0.0/matrix-synapse-1.0.0.tgz
     version: 1.0.0
-generated: "2025-03-01T10:09:39.262049986Z"
+  metube:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-07-19T19:18:27.257649482Z"
+    description: A Helm chart for MeTube - A web GUI for youtube-dl
+    digest: 9f1a75ced21b69a30a6af04e3fd63d88fcbe8ce2d114e9267102d2994004b37d
+    icon: https://raw.githubusercontent.com/alexta69/metube/refs/heads/master/ui/src/assets/icons/android-chrome-384x384.png
+    keywords:
+    - metube
+    - youtube-dl
+    - download
+    - media
+    maintainers:
+    - name: ebadfd
+    name: metube
+    sources:
+    - https://github.com/alexta69/metube
+    urls:
+    - https://github.com/ebadfd/helm-charts/releases/download/metube-0.1.0/metube-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-19T19:18:27.257654992Z"

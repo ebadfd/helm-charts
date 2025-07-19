@@ -1,0 +1,16 @@
+---
+apiVersion: v2
+description: A Helm chart for MeTube - A web GUI for youtube-dl
+icon: https://raw.githubusercontent.com/alexta69/metube/refs/heads/master/ui/src/assets/icons/android-chrome-384x384.png
+name: metube
+version: 0.1.0
+appVersion: "latest"
+keywords:
+  - metube
+  - youtube-dl
+  - download
+  - media
+sources:
+  - https://github.com/alexta69/metube
+maintainers:
+  - name: ebadfd

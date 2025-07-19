@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "metube.fullname" . }}-config
+  labels:
+    {{- include "metube.labels" . | nindent 4 }}
+data:
+  UID: {{ .Values.config.uid | quote }}
+  GID: {{ .Values.config.gid | quote }}
+  UMASK: {{ .Values.config.umask | quote }}
+  DEFAULT_THEME: {{ .Values.config.defaultTheme | quote }}
+  DOWNLOAD_DIR: {{ .Values.config.downloadDir | quote }}
+  AUDIO_DOWNLOAD_DIR: {{ .Values.config.audioDownloadDir | quote }}
+  DOWNLOAD_DIRS_INDEXABLE: {{ .Values.config.downloadDirsIndexable | quote }}
+  CUSTOM_DIRS: {{ .Values.config.customDirs | quote }}
+  CREATE_CUSTOM_DIRS: {{ .Values.config.createCustomDirs | quote }}
+  CUSTOM_DIRS_EXCLUDE_REGEX: {{ .Values.config.customDirsExcludeRegex | quote }}
+  STATE_DIR: {{ .Values.config.stateDir | quote }}
+  TEMP_DIR: {{ .Values.config.tempDir | quote }}
+  DELETE_FILE_ON_TRASHCAN: {{ .Values.config.deleteFileOnTrashcan | quote }}
+  URL_PREFIX: {{ .Values.config.urlPrefix | quote }}
+  PUBLIC_HOST_URL: {{ .Values.config.publicHostUrl | quote }}
+  PUBLIC_HOST_AUDIO_URL: {{ .Values.config.publicHostAudioUrl | quote }}
+  HTTPS: {{ .Values.config.https | quote }}
+  CERTFILE: {{ .Values.config.certFile | quote }}
+  KEYFILE: {{ .Values.config.keyFile | quote }}
+  OUTPUT_TEMPLATE: {{ .Values.config.outputTemplate | quote }}
+  OUTPUT_TEMPLATE_CHAPTER: {{ .Values.config.outputTemplateChapter | quote }}
+  OUTPUT_TEMPLATE_PLAYLIST: {{ .Values.config.outputTemplatePlaylist | quote }}
+  DEFAULT_OPTION_PLAYLIST_STRICT_MODE: {{ .Values.config.defaultOptionPlaylistStrictMode | quote }}
+  DEFAULT_OPTION_PLAYLIST_ITEM_LIMIT: {{ .Values.config.defaultOptionPlaylistItemLimit | quote }}
+  YTDL_OPTIONS: {{ .Values.config.ytdlOptions | quote }}
+  YTDL_OPTIONS_FILE: {{ .Values.config.ytdlOptionsFile | quote }}
+  ROBOTS_TXT: {{ .Values.config.robotsTxt | quote }}
+  DOWNLOAD_MODE: {{ .Values.config.downloadMode | quote }}
+  MAX_CONCURRENT_DOWNLOADS: {{ .Values.config.maxConcurrentDownloads | quote }}
+  LOGLEVEL: {{ .Values.config.logLevel | quote }}
+  ENABLE_ACCESSLOG: {{ .Values.config.enableAccessLog | quote }} 

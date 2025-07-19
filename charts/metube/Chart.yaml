@@ -11,6 +11,7 @@ keywords:
   - download
   - media
 sources:
+  - https://github.com/ebadfd/helm-charts/charts/metube
   - https://github.com/alexta69/metube
 maintainers:
   - name: ebadfd

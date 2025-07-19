@@ -1,0 +1,95 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.homepageLine" . }}
+
+## What is MeTube?
+
+MeTube is a web GUI for youtube-dl, allowing you to download videos from various platforms through a simple web interface. It supports downloading videos, audio-only files, and playlists with customizable options.
+
+## Features
+
+- Web-based GUI for youtube-dl
+- Support for video and audio downloads
+- Playlist downloading capabilities
+- Customizable output templates
+- Concurrent download support
+- Persistent storage for downloads and state
+- Configurable via environment variables
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| ebadfd |  | <https://ebadfd.tech> |
+
+## Installation
+
+### Add Helm repository
+
+```shell
+helm repo add helm-ebadfd https://helm.ebadfd.tech
+helm repo update
+```
+
+### Install the chart
+
+```shell
+helm install my-metube helm-ebadfd/metube
+```
+
+### Customize the installation
+
+```shell
+helm install my-metube helm-ebadfd/metube \
+  --set persistence.downloads.size=50Gi \
+  --set config.downloadMode=concurrent \
+  --set config.maxConcurrentDownloads=5
+```
+
+## Configuration
+
+The following table lists the configurable parameters of the chart and the default values.
+
+{{ template "chart.valuesSection" . }}
+
+### Storage Configuration
+
+The chart supports three types of persistent storage:
+
+1. **Downloads** (`persistence.downloads`): Main storage for downloaded files
+2. **State** (`persistence.state`): Storage for MeTube's internal state and queue persistence
+3. **Temp** (`persistence.temp`): Optional storage for temporary files during downloads
+
+### Environment Variables
+
+All MeTube configuration is done through environment variables. Key configuration options include:
+
+- **Download Settings**: `DOWNLOAD_DIR`, `AUDIO_DOWNLOAD_DIR`, `DOWNLOAD_MODE`
+- **UI Settings**: `DEFAULT_THEME`, `URL_PREFIX`
+- **Output Templates**: `OUTPUT_TEMPLATE`, `OUTPUT_TEMPLATE_PLAYLIST`
+- **yt-dlp Options**: `YTDL_OPTIONS` (JSON format)
+
+### Example Configuration
+
+```yaml
+persistence:
+  downloads:
+    enabled: true
+    size: 100Gi
+    storageClass: "fast-ssd"
+  
+  state:
+    enabled: true
+    size: 5Gi
+
+config:
+  downloadMode: "limited"
+  maxConcurrentDownloads: 3
+  outputTemplate: "%(uploader)s/%(title)s.%(ext)s"
+  ytdlOptions: '{"format": "best[height<=1080]"}'
+```

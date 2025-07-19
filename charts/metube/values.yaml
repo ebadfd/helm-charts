@@ -1,0 +1,166 @@
+# Default values for metube
+# This is a YAML-formatted file.
+
+image:
+  repository: ghcr.io/alexta69/metube
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicaCount: 1
+
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+service:
+  type: ClusterIP
+  port: 8081
+
+# Enable the ingress to expose metube to the network.
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: metube.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Storage configuration for downloads
+persistence:
+  downloads:
+    enabled: true
+    storageClass: ""
+    accessMode: ReadWriteOnce
+    size: 10Gi
+    mountPath: /downloads
+  state:
+    enabled: true
+    storageClass: ""
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /downloads/.metube
+  temp:
+    enabled: false
+    storageClass: ""
+    accessMode: ReadWriteOnce
+    size: 5Gi
+    mountPath: /downloads/temp
+
+# MeTube Configuration via environment variables
+config:
+  # User and group settings
+  uid: 1000
+  gid: 1000
+  umask: "022"
+
+  # UI settings
+  defaultTheme: "auto"  # light, dark, or auto
+
+  # Directory settings
+  downloadDir: "/downloads"
+  audioDownloadDir: "/downloads"  # defaults to downloadDir if not set
+  downloadDirsIndexable: false
+  customDirs: true
+  createCustomDirs: true
+  customDirsExcludeRegex: "(^|/)[.@].*$"
+  stateDir: "/downloads/.metube"
+  tempDir: "/downloads"
+
+  # File management
+  deleteFileOnTrashcan: false
+
+  # Web server settings
+  urlPrefix: "/"
+  publicHostUrl: ""
+  publicHostAudioUrl: ""
+  https: false
+  certFile: ""
+  keyFile: ""
+
+  # Output templates
+  outputTemplate: "%(title)s.%(ext)s"
+  outputTemplateChapter: "%(title)s - %(section_number)s %(section_title)s.%(ext)s"
+  outputTemplatePlaylist: "%(playlist_title)s/%(title)s.%(ext)s"
+
+  # Playlist settings
+  defaultOptionPlaylistStrictMode: false
+  defaultOptionPlaylistItemLimit: 0
+
+  # yt-dlp options
+  ytdlOptions: "{}"
+  ytdlOptionsFile: ""
+
+  # Other settings
+  robotsTxt: ""
+  downloadMode: "limited"  # sequential, concurrent, or limited
+  maxConcurrentDownloads: 3
+  logLevel: "INFO"
+  enableAccessLog: false
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# This is to setup the liveness and readiness probes
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+# This section is for setting up autoscaling
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

@@ -67,10 +67,10 @@ config:
   uid: 1000
   gid: 1000
   umask: "022"
-  
+
   # UI settings
   defaultTheme: "auto"  # light, dark, or auto
-  
+
   # Directory settings
   downloadDir: "/downloads"
   audioDownloadDir: "/downloads"  # defaults to downloadDir if not set
@@ -80,10 +80,10 @@ config:
   customDirsExcludeRegex: "(^|/)[.@].*$"
   stateDir: "/downloads/.metube"
   tempDir: "/downloads"
-  
+
   # File management
   deleteFileOnTrashcan: false
-  
+
   # Web server settings
   urlPrefix: "/"
   publicHostUrl: ""
@@ -91,20 +91,20 @@ config:
   https: false
   certFile: ""
   keyFile: ""
-  
+
   # Output templates
   outputTemplate: "%(title)s.%(ext)s"
   outputTemplateChapter: "%(title)s - %(section_number)s %(section_title)s.%(ext)s"
   outputTemplatePlaylist: "%(playlist_title)s/%(title)s.%(ext)s"
-  
+
   # Playlist settings
   defaultOptionPlaylistStrictMode: false
   defaultOptionPlaylistItemLimit: 0
-  
+
   # yt-dlp options
   ytdlOptions: "{}"
   ytdlOptionsFile: ""
-  
+
   # Other settings
   robotsTxt: ""
   downloadMode: "limited"  # sequential, concurrent, or limited

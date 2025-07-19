@@ -35,4 +35,4 @@ data:
   DOWNLOAD_MODE: {{ .Values.config.downloadMode | quote }}
   MAX_CONCURRENT_DOWNLOADS: {{ .Values.config.maxConcurrentDownloads | quote }}
   LOGLEVEL: {{ .Values.config.logLevel | quote }}
-  ENABLE_ACCESSLOG: {{ .Values.config.enableAccessLog | quote }} 
+  ENABLE_ACCESSLOG: {{ .Values.config.enableAccessLog | quote }}

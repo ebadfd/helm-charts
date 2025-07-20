@@ -46,6 +46,26 @@ entries:
   metube:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-07-20T11:04:03.218605862Z"
+    description: MeTube Web GUI for ytdl
+    digest: 546e39873964edfbccddbb0be70b576df3a0101b42437d94cf49383c8bfeb8b8
+    icon: https://raw.githubusercontent.com/alexta69/metube/refs/heads/master/ui/src/assets/icons/android-chrome-384x384.png
+    keywords:
+    - metube
+    - youtube-dl
+    - download
+    - media
+    maintainers:
+    - name: ebadfd
+    name: metube
+    sources:
+    - https://github.com/ebadfd/helm-charts/charts/metube
+    - https://github.com/alexta69/metube
+    urls:
+    - https://github.com/ebadfd/helm-charts/releases/download/metube-0.2.1/metube-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-07-20T10:05:25.953776966Z"
     description: MeTube Web GUI for ytdl
     digest: b1d9f381dec38558235574bd28b0dc1be13db531819fb6cfa5f4882801a5dfa1
@@ -143,4 +163,4 @@ entries:
     urls:
     - https://github.com/ebadfd/helm-charts/releases/download/metube-0.1.0/metube-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-20T10:05:25.953788869Z"
+generated: "2025-07-20T11:04:03.218632011Z"

@@ -68,6 +68,16 @@ config:
   gid: 1000
   umask: "022"
 
+  # DNS Configuration
+  # IPv6 can break yt-dlp downloads, so this is a workaround to force IPv4 DNS resolution
+  dns:
+    enabled: false  # Set to true to enable custom DNS configuration
+    policy: "None"  # DNS policy: None, Default, ClusterFirst, ClusterFirstWithHostNet
+    nameservers:
+      - "8.8.8.8"  # Google DNS (IPv4 only)
+    options:
+      - name: "single-request-reopen"
+
   # UI settings
   defaultTheme: "auto"  # light, dark, or auto
 

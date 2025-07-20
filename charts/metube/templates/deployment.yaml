@@ -26,6 +26,17 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "metube.serviceAccountName" . }}
+      {{- if .Values.config.dns.enabled }}
+      # IPv6 can break yt-dlp downloads, so this is a workaround to force IPv4 DNS resolution
+      dnsPolicy: {{ .Values.config.dns.policy }}
+      dnsConfig:
+        nameservers:
+          {{- toYaml .Values.config.dns.nameservers | nindent 10 }}
+        {{- if .Values.config.dns.options }}
+        options:
+          {{- toYaml .Values.config.dns.options | nindent 10 }}
+        {{- end }}
+      {{- end }}
       securityContext:
         runAsUser: {{ .Values.config.uid }}
         runAsGroup: {{ .Values.config.gid }}

@@ -3,7 +3,7 @@ apiVersion: v2
 description: MeTube Web GUI for ytdl
 icon: https://raw.githubusercontent.com/alexta69/metube/refs/heads/master/ui/src/assets/icons/android-chrome-384x384.png
 name: metube
-version: 0.1.3
+version: 0.2.0
 appVersion: "latest"
 keywords:
   - metube

@@ -30,6 +30,9 @@ spec:
         runAsUser: {{ .Values.config.uid }}
         runAsGroup: {{ .Values.config.gid }}
         fsGroup: {{ .Values.config.gid }}
+        sysctls:
+          - name: net.ipv6.conf.all.disable_ipv6
+            value: "1"
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

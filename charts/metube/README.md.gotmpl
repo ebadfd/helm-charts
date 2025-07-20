@@ -20,6 +20,7 @@ MeTube is a web GUI for youtube-dl, allowing you to download videos from various
 - Concurrent download support
 - Persistent storage for downloads and state
 - Configurable via environment variables
+- Optional nginx reverse proxy for serving downloads
 
 ## Maintainers
 
@@ -65,6 +66,36 @@ The chart supports three types of persistent storage:
 2. **State** (`persistence.state`): Storage for MeTube's internal state and queue persistence
 3. **Temp** (`persistence.temp`): Optional storage for temporary files during downloads
 
+### Reverse Proxy Configuration
+
+The chart includes an optional nginx reverse proxy that can serve downloaded files directly. This is useful for:
+
+- Serving downloads without going through the MeTube application
+- Better performance for large file downloads
+- Direct access to downloaded files via HTTP
+
+To enable the reverse proxy:
+
+```yaml
+reverseProxy:
+  enabled: true
+  port: 8080
+  downloadsPath: "/downloads"
+  downloadsUrl: "/downloads"
+  proxyDomain: "your-domain.com"
+  security:
+    allowExecutables: false
+    maxFileSize: "100M"
+```
+
+**Security Features:**
+- Blocks executable files by default (configurable)
+- Configurable maximum file size
+- Security headers for protection
+- Health check endpoint at `/health`
+
+**Note:** When the reverse proxy is enabled, the service will route traffic through nginx instead of directly to the MeTube application.
+
 ### Environment Variables
 
 All MeTube configuration is done through environment variables. Key configuration options include:
@@ -92,4 +123,15 @@ config:
   maxConcurrentDownloads: 3
   outputTemplate: "%(uploader)s/%(title)s.%(ext)s"
   ytdlOptions: '{"format": "best[height<=1080]"}'
+
+# Enable reverse proxy for serving downloads
+reverseProxy:
+  enabled: true
+  port: 8080
+  downloadsPath: "/downloads"
+  downloadsUrl: "/downloads"
+  proxyDomain: "metube.example.com"
+  security:
+    allowExecutables: false
+    maxFileSize: "500M"
 ```

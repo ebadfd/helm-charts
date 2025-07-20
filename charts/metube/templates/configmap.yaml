@@ -49,5 +49,9 @@ metadata:
     {{- include "metube.labels" . | nindent 4 }}
 data:
   nginx.conf: |
-{{ .Values.reverseProxy.nginxConfig | replace "PROXY_DOMAIN_PLACEHOLDER" .Values.reverseProxy.proxyDomain | replace "DOWNLOADS_PATH_PLACEHOLDER" .Values.reverseProxy.downloadsPath | nindent 4 }}
+{{- $executableBlocking := "" }}
+{{- if not .Values.reverseProxy.security.allowExecutables }}
+{{- $executableBlocking = "            location ~* \\.(exe|bat|cmd|com|pif|scr|vbs|js)$ {\n                deny all;\n            }" }}
+{{- end }}
+{{ .Values.reverseProxy.nginxConfig | replace "PROXY_DOMAIN_PLACEHOLDER" .Values.reverseProxy.proxyDomain | replace "DOWNLOADS_PATH_PLACEHOLDER" .Values.reverseProxy.downloadsPath | replace "MAX_FILE_SIZE_PLACEHOLDER" .Values.reverseProxy.security.maxFileSize | replace "EXECUTABLE_BLOCKING_PLACEHOLDER" $executableBlocking | nindent 4 }}
 {{- end }}
